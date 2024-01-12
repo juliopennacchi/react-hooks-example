@@ -1,0 +1,50 @@
+Os Hooks mais importantes do React
+
+- useState
+- useEffect
+- useRef
+- useReducer
+- useContext
+- useMemo
+- useCallback
+- useLayoutEffect
+
+
+useState: 
+    armazenar estado de um componente funcional
+
+useEffect: 
+    executar algo quando alguma coisa acontecer no componente, sendo possivel pegar todas mudancas do componente ou de apenas algum resource especifico
+    Note: Eu precisei remover o React.StrictMode da Main.tsx para ver o userEffect comportando de modo correto, o React.StrictMode renderiza duas vezes em dev
+
+useRef: 
+    armazena um valor assim como useState mas quando componente é atualizado ele não renderiza novamente
+    É possivel referenciar elementos html <input ref .../>
+    Também utilizado quando se deseja guardar o valor de um estado anterior (previews value)
+
+useReducer: 
+    Também utilizado para armazenar estado de um componente porem de uma maneira diferente
+        Usar o reducer quando o useState começar ficar muito , muito grande. Ou quando um valor de um useState depender de outro valor
+    Guardar varias tarefas e mostrar na tela
+
+useContext:
+    usado em conjunto com context api para passar props para uma arvore de componentes
+    context tem um objeto com seus valores e açoes
+    provider fica em volta de todos componentes que vamos querer acessar as props para o provider passar à eles
+
+useMemo: 
+    otimizar performance da aplicação, quando há um problema de performance no projeto
+    se possui uma slow function, aplica-se o useMemo essa function somente executa se o valor dela for alterado
+    tomar cuidado pois armazena na memoria, deve saber qndo utlizar
+
+useCallback:
+    usa-se também para otimizar performance
+    similar ao useMemo, porem o useCallback armazena a funcao em memoria enquanto o useMemo armazena o retorno da funcao
+    guarda uma funcao em memoria e ela so é recriada se algum dos itens especificado nela for alterado
+    Quando usar? Sempre que tiver uma funcao que estiver sendo passada como prop e essa funcao tem algum processamento pesado e que se executado
+    sempre que o componente renderizado na tela, podera causar problema de performance 
+
+useLayoutEffect:
+    semelhante ao useEffect
+    a diferença useEffect executa depois que o DOM estiver sido montado pelo React
+    enquanto o useLayoutEffect executa antes que o DOM estiver sido montado pelo React
