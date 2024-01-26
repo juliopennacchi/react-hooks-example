@@ -8,8 +8,8 @@ export default function Message() {
         <div style={{
             padding: '1rem',
             borderRadius: '1rem',
-            color: theme === 'light' ? '#fff' : '#000',
-            backgroundColor: theme === 'light' ? '#000' : '#fff',
+            color: theme === 'light' ? '#000' : '#fff',
+            backgroundColor: theme === 'light' ? '#fff' : '#000',
         }}>
         <h3>Current theme: {theme}</h3>
         <Button onClick={toggleTheme}>Toggle Theme</Button>

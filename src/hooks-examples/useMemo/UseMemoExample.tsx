@@ -31,7 +31,7 @@ export default function UseMemoExample() {
   const isEven = useMemo(() => {
     console.log("memoizing...");
     let i = 0;
-    while (i < 2000000000) i++; //delay
+    // while (i < 2000000000) i++; //delay
     return count % 2 === 0;
   }, [count]);
 

@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
@@ -13,18 +14,21 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { PhoneIcon } from "@chakra-ui/icons";
 
 export default function UseLayoutEffectExample() {
-  const [squareSize, setSquareSize] = useState("20px");
-  const [squareSize2, setSquareSize2] = useState("20px");
+  const [squareSize, setSquareSize] = useState(20);
+  const [squareSize2, setSquareSize2] = useState(20);
+  const [alteraTamanho, setAlteraTamanho] = useState(false);
 
   useEffect(() => {
     console.log("Passou pelo use effect");
-    setSquareSize(() => "50px");
-  }, []);
+    setSquareSize((prev) => prev + 10 );
+  }, [alteraTamanho]);
 
   useLayoutEffect(() => {
     console.log("Passou pelo use layout effect");
-    setSquareSize2(() => "50px");
-  }, []);
+    setSquareSize2(squareSize2  + 10 );
+  }, [alteraTamanho]);
+
+
 
   return (
     <Layout>
@@ -41,10 +45,13 @@ export default function UseLayoutEffectExample() {
         </CardHeader>
         <CardBody>
           <Stack>
-            <Square size={squareSize} bg="tomato" color="white">
+            <Button onClick={() => setAlteraTamanho((prev) => !prev)}>Altera Tamanho</Button>
+          </Stack>
+          <Stack>
+            <Square size={`${squareSize}px`} bg="tomato" color="white">
               <PhoneIcon />
             </Square>
-            <Square size={squareSize2} bg="tomato" color="white">
+            <Square size={`${squareSize2}px`} bg="tomato" color="white">
               <PhoneIcon />
             </Square>
           </Stack>
